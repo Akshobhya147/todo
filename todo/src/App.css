@@ -1,0 +1,185 @@
+body{
+  background-color: #f0f8ff;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/Poppins-ExtraBoldItalic.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("./assets/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("./assets/Poppins-ExtraBold.ttf");
+}
+
+.home{
+  display:flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  align-items: center;
+  margin-top: 50px;
+
+  
+  
+}
+
+.introDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:#2f495c;
+  display: inline;
+  font-size: 2.8rem;
+  margin: 5px;
+  font-family:"Poppins";
+  font-stretch:expanded;
+  font-weight: bolder;
+  
+}
+.line{
+  color:#2f495c;
+  display: inline;
+  font-size: 2.8rem;
+  margin: 5px;
+  font-family:"Poppins";
+  font-stretch:expanded;
+  font-weight: bolder;
+}  
+
+.createTab{
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.newTaskInput{
+  width: 50rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-family: "Poppins-Light";
+  font-size: 1em;
+}
+
+.newTaskInput:focus-visible{
+  
+  border: 2px solid #73b7e7;
+  outline: none;
+}
+
+.addButton{
+  width:100px;
+  margin: 0px 0px 0px 20px;
+  /* background-color: white; */
+  border: none;
+  font-size: 1em;
+  background-color: black;
+  border-radius: 5px;
+  font-family: "Poppins-Light";
+  color: white;
+
+}
+
+.addButton:hover{
+  
+  background-color: rgb(74, 194, 74);
+ 
+  
+}
+
+.itemParent{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Poppins-Light";
+  font-size: 1.5rem;
+  /* background-color: aquamarine; */
+  padding: 20px 20px 20px 20px;
+
+  
+}
+
+#noTasks{
+  display: block;
+  margin: 1000px;
+  color:#89b0cd;
+  display: inline;
+  font-size: 1.5rem;
+  margin: 5px;
+  font-family:"Poppins-Bold";
+  font-stretch:expanded;
+  font-weight: bolder;
+}
+
+.items{
+  padding: 7px 7px 7px 7px;
+  width:50rem;
+  display:block;
+  font-family: "Poppins-Light";
+  font-size: 1.3rem;
+  background-color: #73b7e7;
+  color: white;
+  border-radius: 5px;
+  margin:7px;
+  text-wrap: wrap;
+
+}
+
+.markedItems{
+  padding: 7px 7px 7px 7px;
+  width:50rem;
+  display:block;
+  font-family: "Poppins-Light";
+  font-size: 1.3rem;
+  background-color: #73b7e7;
+  color: white;
+  border-radius: 5px;
+  margin:7px;
+  text-wrap: wrap;
+  text-decoration: line-through;
+
+}
+
+.itemUnit{
+  width: 62vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 2px 0px 2px;
+  margin:7px;
+}
+
+.different{
+  /* padding:7px; */
+  width:120px;
+  height:45px;
+  margin: 0px 5px 0px 5px;
+  /* background-color: white; */
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: rgb(74, 194, 74);
+  border-radius: 5px;
+  font-family: "Poppins-Light";
+  color: white;
+}
+
+#deleteButton{
+  background-color: rgb(252, 61, 61);
+}
+
+.different:hover{
+  background-color: rgb(246, 179, 23);
+}
+
+#deleteButton:hover{
+  background-color: rgb(246, 179, 23);
+}
