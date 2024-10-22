@@ -6,9 +6,9 @@ function App() {
   const [count, setCount] = useState("");
   // console.log("say please:", setCount);
   return (
-    <div>
+    <>
       <Home count={count} setCount={setCount} />
-    </div>
+    </>
   );
 }
 

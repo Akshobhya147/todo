@@ -1,20 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; //HTTP request-response library
-function Create({ setCount }) {
+function Create({ setCount, setTodos, todos }) {
   const [task, setTask] = useState();
 
+  const [clear, setClear] = useState(false);
   const taskAddHandler = () => {
     let date = new Date();
     // console.log("what:", setCount);
+
+    let jsonObj = {
+      _id: "anything",
+      task: task,
+      taskID: date.getTime(),
+      completed: false,
+      __v: 0,
+    };
+
+    setClear(false);
+
+    setTodos([...todos, jsonObj]);
+    console.log(todos);
     setCount(date.toString());
+
     if (task != null && task != "") {
       console.log("arre:", task);
       axios
-        .post("http://localhost:3001/add", {
+        .post("https://server-todo-kehg.onrender.com/add", {
           task: task,
           taskID: date.getTime(),
         })
-        .then(location.reload())
+        .then(console.log("yo added"))
         .catch((ero) => console.log(ero));
     }
   };
@@ -29,8 +44,10 @@ function Create({ setCount }) {
         name="task_name"
         className="newTaskInput"
         placeholder="Create a Task"
+        value={clear ? task : ""}
         // onKeyDown={enterExecution}
         onChange={(e) => {
+          setClear(true);
           setTask(e.target.value);
         }}
       ></input>

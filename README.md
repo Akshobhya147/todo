@@ -13,5 +13,6 @@ Node must be installed.
 
 Deployed Link:
 https://todo-bygatsby147.netlify.app/
+(Front-end deployed on Netlify and Back-end deployed on Render)
 
 peace out ;).

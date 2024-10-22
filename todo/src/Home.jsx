@@ -5,26 +5,70 @@ import axios from "axios";
 
 function Home({ count, setCount }) {
   const [todos, setTodos] = useState([]);
+
+  const clearTodos = () => {
+    setTodos([]);
+  };
+
   // const [updateList, setUpdateList] = useState(0);
+  function del(todo) {
+    let arr = todos.filter((x) => x.taskID !== todo.taskID);
+    console.log("arr:", arr);
+    console.log("todos/////////////////", todos);
+    setTodos(arr);
+    handleDelete(todo._id);
+  }
+  useEffect(() => {
+    setTodos;
+  }, [count]);
+
+  function updateComplete(todo) {
+    // setTodods(()=>)
+    const y = todos.filter((x) => x.taskID == todo.taskID);
+    const z = todos.filter((x) => x.taskID != todo.taskID);
+
+    // const ind = todos.indexOf(y);
+    let jsonObj = {
+      _id: y[0]._id,
+      task: y[0].task,
+      taskID: y[0].taskID,
+      completed: true,
+      __v: 0,
+    };
+    // console.log("jsonobj:", jsonObj);
+    // console.log("zzzzz", z);
+    // console.log("yyyyyy", y);
+
+    // setTodos(todos.splice(ind, 1));
+    clearTodos();
+    setTodos([...z, jsonObj]);
+    console.log("dddddddddddddddddd:", todos);
+    // setTodos([...todos, ...y]);
+
+    console.log("totototot:", todos);
+    handleEdit(todo._id);
+  }
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/get")
+      // http://localhost:3001
+      // https://server-todo-kehg.onrender.com
+      .get("https://server-todo-kehg.onrender.com/get")
       .then((result) => setTodos(result.data))
       .catch((ero) => console.log(ero));
-  }, [count]);
+  }, []);
 
   const handleEdit = (id) => {
     axios
-      .put("http://localhost:3001/update" + id)
-      .then(location.reload())
+      .put("https://server-todo-kehg.onrender.com/update" + id)
+      .then(console.log("yo put"))
       .catch((ero) => console.log(ero));
   };
 
   const handleDelete = (id) => {
     axios
-      .delete("http://localhost:3001/delete" + id)
-      .then(location.reload())
+      .delete("https://server-todo-kehg.onrender.com/delete" + id)
+      .then(console.log("yo delete"))
       .catch((ero) => console.log(ero));
   };
 
@@ -34,7 +78,7 @@ function Home({ count, setCount }) {
         <Typewriter
           onInit={(typewriter) => {
             typewriter
-              .typeString("Hi! This is your personalized To-Do List.")
+              .typeString("Your To-do List")
               .pauseFor(1500)
               .deleteAll()
               .typeString("Get Productive!")
@@ -49,11 +93,11 @@ function Home({ count, setCount }) {
           }}
         />
       </div>
-      <Create setCount={setCount} />
+      <Create setCount={setCount} setTodos={setTodos} todos={todos} />
       <div className="itemParent">
         {todos.length == 0 ? (
           <div>
-            <h2 id="noTasks">No Taks Added</h2>
+            <h2 id="noTasks">No Tasks Added</h2>
           </div>
         ) : (
           todos.map((todo) => (
@@ -65,9 +109,7 @@ function Home({ count, setCount }) {
               <button
                 type="button"
                 className="different"
-                onClick={() => {
-                  handleEdit(todo._id);
-                }}
+                onClick={() => updateComplete(todo)}
               >
                 Finish
               </button>
@@ -75,7 +117,7 @@ function Home({ count, setCount }) {
                 type="button"
                 className="different"
                 id="deleteButton"
-                onClick={() => handleDelete(todo._id)}
+                onClick={() => del(todo)}
               >
                 Delete
               </button>
